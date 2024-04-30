@@ -1,3 +1,4 @@
+import { Link } from "react-router-native";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import Constants from "expo-constants";
 
@@ -5,7 +6,8 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "#24292e",
-    // ...
+    display: "flex",
+    flexDirection: "row",
   },
   text: {
     color: "#EEEEEE",
@@ -21,9 +23,12 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Pressable onPress="console.log()">
+      <Link to="/">
         <Text style={styles.text}>Repositories</Text>
-      </Pressable>
+      </Link>
+      <Link to="/signin">
+        <Text style={styles.text}>Sign in</Text>
+      </Link>
     </View>
   );
 };
