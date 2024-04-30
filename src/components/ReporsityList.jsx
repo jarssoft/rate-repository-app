@@ -65,7 +65,7 @@ const RepositoryList = () => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item, index, separators }) => (
         <TouchableHighlight
-          key={index}
+          name={index}
           onPress={() => this._onPress(item)}
           onShowUnderlay={separators.highlight}
           onHideUnderlay={separators.unhighlight}
