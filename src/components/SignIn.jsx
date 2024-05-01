@@ -32,11 +32,11 @@ const SignIn = () => {
       margin: 20,
       backgroundColor: "#FFFFFF",
       borderRadius: 4,
-      borderColor: "#AAAAAA",
-      borderWidth: 2,
     },
     error: {
       borderColor: theme.colors.error,
+
+      borderWidth: 2,
     },
     submit: {
       padding: 20,
@@ -56,24 +56,30 @@ const SignIn = () => {
     <View>
       <TextInput
         placeholder="Username"
-        style={[styles.input, formik.errors.username && styles.error]}
-        value={formik.values.ussername}
+        style={[
+          styles.input,
+          formik.touched.password && formik.errors.username && styles.error,
+        ]}
+        value={formik.values.username}
         onChangeText={formik.handleChange("username")}
       />
       {formik.touched.username && formik.errors.username && (
-        <Text style={{ color: theme.colors.error }}>
+        <Text style={{ marginLeft: 20, color: theme.colors.error }}>
           {formik.errors.username}
         </Text>
       )}
       <TextInput
         secureTextEntry
+        style={[
+          styles.input,
+          formik.touched.password && formik.errors.password && styles.error,
+        ]}
         placeholder="Password"
-        style={[styles.input, formik.errors.password && styles.error]}
         value={formik.values.password}
         onChangeText={formik.handleChange("password")}
       />
       {formik.touched.password && formik.errors.password && (
-        <Text style={{ color: theme.colors.error }}>
+        <Text style={{ marginLeft: 20, color: theme.colors.error }}>
           {formik.errors.password}
         </Text>
       )}
