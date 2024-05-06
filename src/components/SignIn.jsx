@@ -35,7 +35,6 @@ const SignIn = () => {
     },
     error: {
       borderColor: theme.colors.error,
-
       borderWidth: 2,
     },
     submit: {

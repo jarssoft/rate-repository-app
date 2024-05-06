@@ -1,5 +1,5 @@
 import { Link } from "react-router-native";
-import { View, ScrollView, StyleSheet, Text, Pressable } from "react-native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
