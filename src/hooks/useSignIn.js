@@ -11,9 +11,10 @@ const useSignIn = () => {
   const signIn = async ({ username, password }) => {
     //call the mutate function here with the right arguments
     const r = await mutate({
-      variables: { authenticateCredentials: { username, password } },
+      variables: {
+        authenticateCredentials: { username, password },
+      },
     });
-    //console.log("useSignIn r " + JSON.stringify(r.data.authenticate));
     return r;
   };
 
