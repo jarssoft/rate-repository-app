@@ -3,14 +3,11 @@ import { View, TextInput, Pressable, StyleSheet } from "react-native";
 import { useFormik } from "formik";
 import theme from "../theme";
 import * as yup from "yup";
+import useSignIn from "../hooks/useSignIn";
 
 const initialValues = {
   username: "",
   password: "",
-};
-
-const onSubmit = (values) => {
-  console.log(values);
 };
 
 const validationSchema = yup.object().shape({
@@ -19,6 +16,20 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
+  const [signIn] = useSignIn();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+    try {
+      const { data } = await signIn({ username, password });
+      console.log(
+        "authenticate mutation: " + JSON.stringify(data.authenticate)
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
