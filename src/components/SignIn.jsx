@@ -1,10 +1,10 @@
 import Text from "./Text";
 import { View, TextInput, Pressable, StyleSheet } from "react-native";
+import { useNavigate } from "react-router-native";
 import { useFormik } from "formik";
 import theme from "../theme";
 import * as yup from "yup";
 import useSignIn from "../hooks/useSignIn";
-import AuthStorage from "../utils/authStorage";
 
 const initialValues = {
   username: "",
@@ -18,22 +18,20 @@ const validationSchema = yup.object().shape({
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     //test AuthStorage
-    const storage = new AuthStorage("test");
-    console.log("getAccessToken: " + (await storage.getAccessToken()));
-    storage.setAccessToken("koe2");
-    console.log("getAccessToken: " + (await storage.getAccessToken()));
-    storage.removeAccessToken();
-    console.log("getAccessToken: " + (await storage.getAccessToken()));
 
     const { username, password } = values;
     try {
       const { data } = await signIn({ username, password });
-      console.log(
-        "authenticate mutation: " + JSON.stringify(data.authenticate)
-      );
+      //console.log(
+      //  "authenticate mutation: " + JSON.stringify(data.authenticate)
+      //);
+      if (data) {
+        navigate("/");
+      }
     } catch (e) {
       console.log(e);
     }
