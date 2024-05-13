@@ -1,6 +1,8 @@
 import { Link } from "react-router-native";
 import { View, ScrollView, StyleSheet, Text } from "react-native";
 import Constants from "expo-constants";
+import useMe from "../hooks/useMe";
+import useSignIn from "../hooks/useSignIn";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,15 +23,29 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
+  const [signIn] = useSignIn();
+  const { me } = useMe();
+  console.log("AppBar: me = " + JSON.stringify(me));
+
+  //if (me.loading) {
+  //  return <></>;
+  // }
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
         <Link to="/">
           <Text style={styles.text}>Repositories</Text>
         </Link>
-        <Link to="/signin">
-          <Text style={styles.text}>Sign in</Text>
-        </Link>
+        {me ? (
+          <Link to="/signout" onPress={signIn}>
+            <Text style={styles.text}>Sign out</Text>
+          </Link>
+        ) : (
+          <Link to="/signin">
+            <Text style={styles.text}>Sign in</Text>
+          </Link>
+        )}
       </ScrollView>
     </View>
   );

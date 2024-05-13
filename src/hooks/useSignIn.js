@@ -15,24 +15,34 @@ const useSignIn = () => {
   });
 
   const signIn = async ({ username, password }) => {
-    //call the mutate function here with the right arguments
-    const r = await mutate({
-      variables: {
-        authenticateCredentials: { username, password },
-      },
-    });
+    if (username && password) {
+      //call the mutate function here with the right arguments
+      const r = await mutate({
+        variables: {
+          authenticateCredentials: { username, password },
+        },
+      });
 
-    console.log(`r:${JSON.stringify(r)}`);
+      console.log(`r:${JSON.stringify(r)}`);
 
-    if (r && r.data) {
-      console.log("useSignIn r " + r.data.authenticate.accessToken);
-      authStorage.setAccessToken(r.data.authenticate.accessToken);
+      if (r && r.data) {
+        console.log("useSignIn r " + r.data.authenticate.accessToken);
+        authStorage.setAccessToken(r.data.authenticate.accessToken);
+        apolloClient.resetStore();
+      }
+
+      console.log(
+        "signin getAccessToken: " + (await authStorage.getAccessToken())
+      );
+
+      return r;
+    } else {
+      await authStorage.removeAccessToken();
       apolloClient.resetStore();
+      console.log(
+        "signout getAccessToken: " + (await authStorage.getAccessToken())
+      );
     }
-
-    console.log("getAccessToken: " + (await authStorage.getAccessToken()));
-
-    return r;
   };
 
   return [signIn, result];

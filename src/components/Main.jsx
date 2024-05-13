@@ -4,7 +4,6 @@ import RepositoryList from "./ReporsityList";
 import AppBar from "./AppBar";
 import { Route, Routes, Navigate } from "react-router-native";
 import SignIn from "./SignIn";
-import useMe from "../hooks/useMe";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,9 +15,6 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  useMe();
-  //console.log("me: " + JSON.stringify(me));
-
   return (
     <View style={styles.container}>
       <AppBar></AppBar>
