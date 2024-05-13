@@ -35,6 +35,9 @@ const createApolloClient = (authStorage) => {
       return { headers };
     }
   });
+
+  console.log("authLink: " + JSON.stringify(authLink));
+
   return new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),

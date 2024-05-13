@@ -25,8 +25,8 @@ const useSignIn = () => {
     console.log(`r:${JSON.stringify(r)}`);
 
     if (r && r.data) {
-      console.log(r.data.authenticate.user.id);
-      authStorage.setAccessToken(r.data.authenticate.user.id);
+      console.log("useSignIn r " + r.data.authenticate.accessToken);
+      authStorage.setAccessToken(r.data.authenticate.accessToken);
       apolloClient.resetStore();
     }
 

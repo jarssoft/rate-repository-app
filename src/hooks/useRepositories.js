@@ -11,13 +11,6 @@ const useRepositories = () => {
     // Other options
   });
 
-  if (data) {
-    console.log("useQuery:");
-    console.log(data.repositories);
-    console.log(error);
-    console.log(loading);
-  }
-
   //useEffect(() => {
   //fetchRepositories();
   //}, []);
