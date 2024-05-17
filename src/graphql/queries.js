@@ -20,8 +20,8 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_REPOSITORY = gql`
-  query {
-    repository(id: "jaredpalmer.formik") {
+  query Repository($repositoryId: ID!) {
+    repository(id: $repositoryId) {
       id
       fullName
       url

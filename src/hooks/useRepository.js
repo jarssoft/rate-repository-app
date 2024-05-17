@@ -5,7 +5,7 @@ const useRepository = () => {
   const { data, error, loading } = useQuery(GET_REPOSITORY, {
     fetchPolicy: "cache-and-network",
     variables: {
-      repositoryId: "jaredpalmer.formik",
+      repositoryId: "rails.rails",
     },
     onError: (error) => {
       console.log("useRepository error " + error.graphQLErrors[0].message);
