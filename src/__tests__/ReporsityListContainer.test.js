@@ -49,7 +49,7 @@ describe("RepositoryList", () => {
 
       render(<RepositoryListContainer repositories={repositories} />);
 
-      screen.debug();
+      //screen.debug();
 
       screen.getAllByText("21.9k");
 
