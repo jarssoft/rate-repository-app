@@ -17,7 +17,7 @@ const formatnumber = (value) => {
 
 const KeyValue = ({ name, value }) => {
   return (
-    <View style={styles.flexContainer}>
+    <View testID="keyValue" style={styles.flexContainer}>
       <Text fontWeight="bold" style={styles.item}>
         {formatnumber(value)}
       </Text>

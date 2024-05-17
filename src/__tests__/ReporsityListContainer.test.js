@@ -51,6 +51,8 @@ describe("RepositoryList", () => {
 
       screen.debug();
 
+      screen.getAllByText("21.9k");
+
       const repositoryItems = screen.getAllByTestId("repositoryItem");
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
@@ -64,14 +66,20 @@ describe("RepositoryList", () => {
       expect(firstRepositoryItem).toHaveTextContent("21.9k");
       expect(firstRepositoryItem).toHaveTextContent("88");
       expect(firstRepositoryItem).toHaveTextContent("3");
+      expect(firstRepositoryItem).not.toHaveTextContent("1.8k");
 
       expect(secondRepositoryItem).toHaveTextContent(
         "async-library/react-async"
       );
 
-      //console.log(JSON.stringify(firstRepositoryItem));
-      //expect(screen.getByText("jaredpalmer/formik")).toBeDefined();
-      // Add your test code here
+      const keyValues = screen.getAllByTestId("keyValue");
+      const [, second, third, fourth, fifth] = keyValues;
+
+      //name, description, language, forks count, stargazers count, rating average, and review
+      expect(second).toHaveTextContent(/^1.6kForks$/);
+      expect(third).toHaveTextContent(/^3Reviews$/);
+      expect(fourth).toHaveTextContent(/^88Rating$/);
+      expect(fifth).toHaveTextContent(/^1.8kStars$/);
     });
   });
 });
