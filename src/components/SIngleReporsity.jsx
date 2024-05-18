@@ -12,7 +12,9 @@ const SingleReporsity = () => {
     return <Text>Loading</Text>;
   }
 
-  return <RepositoryItem item={repository}></RepositoryItem>;
+  return (
+    <RepositoryItem item={repository} githubbutton={true}></RepositoryItem>
+  );
 };
 
 export default SingleReporsity;

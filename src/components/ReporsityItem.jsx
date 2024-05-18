@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from "react-native";
+import { Pressable, View, Image, StyleSheet } from "react-native";
 import KeyValue from "./KeyValue";
 import Text from "./Text";
 import theme from "../theme";
@@ -42,9 +42,21 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     borderRadius: 4,
   },
+  submit: {
+    padding: 20,
+    fontSize: theme.fontSizes.subheading,
+    backgroundColor: theme.colors.primary,
+    borderRadius: 4,
+    margin: 10,
+  },
+  submittext: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: theme.fontWeights.bold,
+  },
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, githubbutton }) => {
   return (
     <View testID="repositoryItem" style={styles.reporsity}>
       <View style={styles.main}>
@@ -66,6 +78,16 @@ const RepositoryItem = ({ item }) => {
         <KeyValue name="Reviews" value={item.reviewCount}></KeyValue>
         <KeyValue name="Rating" value={item.ratingAverage}></KeyValue>
       </View>
+      {githubbutton ? (
+        <Pressable
+          style={styles.submit}
+          onPress={() => console.log("ReporsityItem: pressed")}
+        >
+          <Text style={styles.submittext}>Open in GitHub</Text>
+        </Pressable>
+      ) : (
+        <></>
+      )}
     </View>
   );
 };
