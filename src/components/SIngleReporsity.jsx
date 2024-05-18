@@ -6,7 +6,6 @@ import Text from "./Text";
 const SingleReporsity = () => {
   let { userId } = useParams();
   const { repository, loading } = useRepository(userId);
-  console.log(userId);
 
   if (loading) {
     return <Text>Loading</Text>;

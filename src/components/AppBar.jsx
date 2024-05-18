@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   const [signIn] = useSignIn();
   const { me } = useMe();
-  console.log("AppBar: me = " + JSON.stringify(me));
 
   //if (me.loading) {
   //  return <></>;
@@ -36,9 +35,6 @@ const AppBar = () => {
       <ScrollView horizontal>
         <Link to="/">
           <Text style={styles.text}>Repositories</Text>
-        </Link>
-        <Link to="/single/reduxjs.redux">
-          <Text style={styles.text}>Single</Text>
         </Link>
         {me ? (
           <Link to="/signout" onPress={signIn}>
