@@ -5,6 +5,7 @@ export const GET_REPOSITORIES = gql`
     repositories(orderBy: CREATED_AT, orderDirection: ASC) {
       edges {
         node {
+          id
           fullName
           description
           language
