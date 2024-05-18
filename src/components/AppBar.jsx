@@ -37,7 +37,7 @@ const AppBar = () => {
         <Link to="/">
           <Text style={styles.text}>Repositories</Text>
         </Link>
-        <Link to="/single">
+        <Link to="/single/reduxjs.redux">
           <Text style={styles.text}>Single</Text>
         </Link>
         {me ? (

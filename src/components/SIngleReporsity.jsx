@@ -1,9 +1,12 @@
 import useRepository from "../hooks/useRepository";
+import { useParams } from "react-router-native";
 import RepositoryItem from "./ReporsityItem";
 import Text from "./Text";
 
 const SingleReporsity = () => {
-  const { repository, loading } = useRepository();
+  let { userId } = useParams();
+  const { repository, loading } = useRepository(userId);
+  console.log(userId);
 
   if (loading) {
     return <Text>Loading</Text>;
