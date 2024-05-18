@@ -2,6 +2,7 @@ import { Pressable, View, Image, StyleSheet } from "react-native";
 import KeyValue from "./KeyValue";
 import Text from "./Text";
 import theme from "../theme";
+import * as Linking from "expo-linking";
 
 const styles = StyleSheet.create({
   container: {
@@ -81,7 +82,7 @@ const RepositoryItem = ({ item, githubbutton }) => {
       {githubbutton ? (
         <Pressable
           style={styles.submit}
-          onPress={() => console.log("ReporsityItem: pressed")}
+          onPress={() => Linking.openURL(item.url)}
         >
           <Text style={styles.submittext}>Open in GitHub</Text>
         </Pressable>
