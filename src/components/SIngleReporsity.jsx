@@ -7,6 +7,11 @@ import { FlatList } from "react-native";
 import ItemSeparator from "./ItemSeparator";
 import { View, StyleSheet } from "react-native";
 
+function parseISOString(s) {
+  var b = s.split(/\D+/);
+  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+}
+
 const ReporsityInfo = ({ repository }) => {
   return (
     <>
@@ -57,8 +62,12 @@ const ReviewItem = ({ review }) => {
         </Text>
       </View>
       <View style={styles.maincontainer}>
-        <Text fontWeight="bold">{review.user.username}</Text>
-        <Text color="textSecondary">{review.createdAt}</Text>
+        <Text fontSize="subheading" fontWeight="bold">
+          {review.user.username}
+        </Text>
+        <Text color="textSecondary">
+          {parseISOString(review.createdAt).toDateString()}
+        </Text>
         <Text style={{ flexShrink: 1 }}>{review.text}</Text>
       </View>
     </View>
