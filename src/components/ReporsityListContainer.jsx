@@ -1,16 +1,9 @@
 import { FlatList } from "react-native";
-import { View, StyleSheet, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import { TouchableHighlight } from "react-native";
 import RepositoryItem from "./ReporsityItem";
 import { useNavigate } from "react-router-native";
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
-});
-
-const ItemSeparator = () => <View style={styles.separator} />;
+import ItemSeparator from "./ItemSeparator";
 
 const RepositoryListContainer = ({ repositories }) => {
   const navigate = useNavigate();
