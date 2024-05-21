@@ -39,10 +39,10 @@ const RepositoryList = () => {
         style={{
           padding: 5,
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "flex-end",
         }}
       >
-        <Text style={styles.selecttext}>Sorting: </Text>
+        <Text style={styles.selecttext}>Sort: </Text>
         <Pressable
           onPress={() => {
             setOrder(orders[0]);
