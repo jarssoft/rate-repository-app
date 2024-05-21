@@ -20,4 +20,12 @@ export const CREATEREVIEW = gql`
   }
 `;
 
+export const CREATEUSER = gql`
+  mutation CreateUser($user: CreateUserInput) {
+    createUser(user: $user) {
+      username
+    }
+  }
+`;
+
 export default SIGNIN;
