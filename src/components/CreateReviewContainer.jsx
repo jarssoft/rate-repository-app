@@ -5,21 +5,21 @@ import theme from "../theme";
 import * as yup from "yup";
 
 const initialValues = {
-  owner: "",
-  name: "",
+  ownerName: "",
+  repositoryName: "",
   rating: "",
-  review: "",
+  text: "",
 };
 
 const validationSchema = yup.object().shape({
-  owner: yup.string().required("Username is required"),
-  name: yup.string().required("Password is required"),
+  ownerName: yup.string().required("Username is required"),
+  repositoryName: yup.string().required("Password is required"),
   rating: yup
     .number()
     .min(0, "Rating most be 0 or higher.")
     .max(100, "Rating most be 100 or lower.")
     .required("Rating is required"),
-  review: yup.string(),
+  text: yup.string(),
 });
 
 const CreateReviewContainer = ({ onSubmit }) => {
@@ -63,12 +63,12 @@ const CreateReviewContainer = ({ onSubmit }) => {
           styles.input,
           formik.touched.password && formik.errors.username && styles.error,
         ]}
-        value={formik.values.owner}
-        onChangeText={formik.handleChange("owner")}
+        value={formik.values.ownerName}
+        onChangeText={formik.handleChange("ownerName")}
       />
-      {formik.touched.owner && formik.errors.owner && (
+      {formik.touched.ownerName && formik.errors.ownerName && (
         <Text style={{ marginLeft: 20, color: theme.colors.error }}>
-          {formik.errors.owner}
+          {formik.errors.ownerName}
         </Text>
       )}
       <TextInput
@@ -77,12 +77,12 @@ const CreateReviewContainer = ({ onSubmit }) => {
           formik.touched.password && formik.errors.password && styles.error,
         ]}
         placeholder="Name of reporsity"
-        value={formik.values.name}
-        onChangeText={formik.handleChange("name")}
+        value={formik.values.repositoryName}
+        onChangeText={formik.handleChange("repositoryName")}
       />
-      {formik.touched.name && formik.errors.name && (
+      {formik.touched.repositoryName && formik.errors.repositoryName && (
         <Text style={{ marginLeft: 20, color: theme.colors.error }}>
-          {formik.errors.name}
+          {formik.errors.repositoryName}
         </Text>
       )}
       <TextInput
@@ -105,12 +105,13 @@ const CreateReviewContainer = ({ onSubmit }) => {
           formik.touched.password && formik.errors.password && styles.error,
         ]}
         placeholder="Review"
-        value={formik.values.review}
-        onChangeText={formik.handleChange("review")}
+        value={formik.values.text}
+        multiline={true}
+        onChangeText={formik.handleChange("text")}
       />
-      {formik.touched.review && formik.errors.review && (
+      {formik.touched.text && formik.errors.text && (
         <Text style={{ marginLeft: 20, color: theme.colors.error }}>
-          {formik.errors.review}
+          {formik.errors.text}
         </Text>
       )}
       <Pressable style={styles.submit} onPress={formik.handleSubmit}>

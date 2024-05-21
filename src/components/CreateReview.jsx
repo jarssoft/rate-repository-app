@@ -1,15 +1,20 @@
 import { useNavigate } from "react-router-native";
-import useSignIn from "../hooks/useSignIn";
 import CreateReviewContainer from "./CreateReviewContainer";
+import useCreateReview from "../hooks/useCreateRepository";
 
 const CreateReview = () => {
-  const [signIn] = useSignIn();
+  const [createReview] = useCreateReview();
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    const { username, password } = values;
+    const { ownerName, repositoryName, rating, text } = values;
     try {
-      const { data } = await signIn({ username, password });
+      const { data } = await createReview({
+        ownerName,
+        repositoryName,
+        rating,
+        text,
+      });
       if (data) {
         navigate("/");
       }
