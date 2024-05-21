@@ -8,7 +8,10 @@ const useRepositories = () => {
 
   const { data, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-and-network",
-    // Other options
+    variables: {
+      orderDirection: "ASC",
+      orderBy: "RATING_AVERAGE",
+    },
   });
 
   //useEffect(() => {
