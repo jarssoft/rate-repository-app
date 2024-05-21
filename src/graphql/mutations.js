@@ -15,6 +15,7 @@ export const CREATEREVIEW = gql`
   mutation CreateReview($review: CreateReviewInput) {
     createReview(review: $review) {
       id
+      repositoryId
     }
   }
 `;

@@ -17,17 +17,20 @@ const useCreateReview = () => {
   const createReview = async ({ ownerName, repositoryName, rating, text }) => {
     if (ownerName && repositoryName && rating && text) {
       //call the mutate function here with the right arguments
+
+      console.log(`createReview:`);
+
       const r = await mutate({
         variables: {
           review: { ownerName, repositoryName, rating: 5, text },
         },
       });
 
-      console.log(`r:${JSON.stringify(r)}`);
+      console.log(`useCreateReview: r = ${JSON.stringify(r)}`);
 
       if (r && r.data) {
-        console.log("useCreateRepository r " + r.data.authenticate.accessToken);
-        apolloClient.resetStore();
+        //console.log("useCreateRepository r " + r.data.authenticate.accessToken);
+        //apolloClient.resetStore();
       }
 
       console.log(

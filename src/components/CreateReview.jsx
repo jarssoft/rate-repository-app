@@ -15,9 +15,10 @@ const CreateReview = () => {
         rating,
         text,
       });
-      if (data) {
-        navigate("/");
-      }
+
+      console.log(`/single/${data.createReview.repositoryId}`);
+      //navigate("/");
+      navigate(`/single/${data.createReview.repositoryId}`);
     } catch (e) {
       console.log(e);
     }

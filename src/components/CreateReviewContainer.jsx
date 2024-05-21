@@ -5,10 +5,10 @@ import theme from "../theme";
 import * as yup from "yup";
 
 const initialValues = {
-  ownerName: "",
-  repositoryName: "",
-  rating: "",
-  text: "",
+  ownerName: "zeit",
+  repositoryName: "swr",
+  rating: "5",
+  text: "...",
 };
 
 const validationSchema = yup.object().shape({
