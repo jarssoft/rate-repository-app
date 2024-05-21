@@ -2,11 +2,9 @@ import { useMutation } from "@apollo/client";
 import { CREATEREVIEW } from "../graphql/mutations";
 import { useContext } from "react";
 import AuthStorageContext from "../context/AuthStorageContext";
-import { useApolloClient } from "@apollo/client";
 
 const useCreateReview = () => {
   const authStorage = useContext(AuthStorageContext);
-  const apolloClient = useApolloClient();
 
   const [mutate, result] = useMutation(CREATEREVIEW, {
     onError: (error) => {
@@ -15,14 +13,14 @@ const useCreateReview = () => {
   });
 
   const createReview = async ({ ownerName, repositoryName, rating, text }) => {
-    if (ownerName && repositoryName && rating && text) {
+    if (ownerName && repositoryName && rating) {
       //call the mutate function here with the right arguments
 
       console.log(`createReview:`);
 
       const r = await mutate({
         variables: {
-          review: { ownerName, repositoryName, rating: 5, text },
+          review: { ownerName, repositoryName, rating: Number(rating), text },
         },
       });
 

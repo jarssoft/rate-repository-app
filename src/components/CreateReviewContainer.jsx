@@ -7,8 +7,8 @@ import * as yup from "yup";
 const initialValues = {
   ownerName: "zeit",
   repositoryName: "swr",
-  rating: "5",
-  text: "...",
+  rating: "",
+  text: "",
 };
 
 const validationSchema = yup.object().shape({
@@ -16,6 +16,7 @@ const validationSchema = yup.object().shape({
   repositoryName: yup.string().required("Password is required"),
   rating: yup
     .number()
+    .transform((value) => (isNaN(value) ? 50 : parseInt(value)))
     .min(0, "Rating most be 0 or higher.")
     .max(100, "Rating most be 100 or lower.")
     .required("Rating is required"),
