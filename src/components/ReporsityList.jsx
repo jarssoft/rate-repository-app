@@ -1,13 +1,89 @@
 import useRepositories from "../hooks/useRepositories";
 import RepositoryListContainer from "./ReporsityListContainer";
 import { useState } from "react";
+import * as React from "react";
+import { Pressable, View } from "react-native";
+import Text from "./Text";
+import { StyleSheet } from "react-native";
+import theme from "../theme";
+
+const orders = [
+  { by: "CREATED_AT", direction: "ASC" },
+  { by: "RATING_AVERAGE", direction: "DESC" },
+  { by: "RATING_AVERAGE", direction: "ASC" },
+];
+
+const styles = StyleSheet.create({
+  select: {
+    padding: 10,
+    fontSize: theme.fontSizes.subheading,
+    margin: 4,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 4,
+  },
+  selecttext: {
+    padding: 10,
+    fontSize: theme.fontSizes.subheading,
+    margin: 4,
+    borderRadius: 4,
+  },
+});
 
 const RepositoryList = () => {
-  const [by, setBy] = useState("RATING_AVERAGE");
-  const [direction, setDirection] = useState("DESC");
-  const { repositories } = useRepositories(by, direction);
+  const [order, setOrder] = useState(orders[0]);
+  const { repositories } = useRepositories(order.by, order.direction);
 
-  return <RepositoryListContainer repositories={repositories} />;
+  return (
+    <>
+      <View
+        style={{
+          padding: 5,
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={styles.selecttext}>Sorting: </Text>
+        <Pressable
+          onPress={() => {
+            setOrder(orders[0]);
+          }}
+        >
+          <Text
+            style={styles.select}
+            fontWeight={order == orders[0] ? "bold" : ""}
+          >
+            Latest
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setOrder(orders[1]);
+          }}
+        >
+          <Text
+            style={styles.select}
+            fontWeight={order == orders[1] ? "bold" : ""}
+          >
+            Highest rated
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setOrder(orders[2]);
+          }}
+        >
+          <Text
+            style={styles.select}
+            fontWeight={order == orders[2] ? "bold" : ""}
+          >
+            Lowest rated{" "}
+          </Text>
+        </Pressable>
+      </View>
+
+      <RepositoryListContainer repositories={repositories} />
+    </>
+  );
 };
 
 export default RepositoryList;
