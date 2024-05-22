@@ -8,16 +8,13 @@ import ReviewItem from "./ReviewItem";
 
 const ReporsityInfo = ({ repository }) => {
   return (
-    <>
-      <RepositoryItem item={repository} githubbutton={true}></RepositoryItem>
-      <ItemSeparator></ItemSeparator>
-    </>
+    <RepositoryItem item={repository} githubbutton={true}></RepositoryItem>
   );
 };
 
 const SingleReporsity = () => {
-  let { userId } = useParams();
-  const { repository, loading } = useRepository(userId);
+  let { repositoryId } = useParams();
+  const { repository, loading } = useRepository(repositoryId);
 
   if (loading) {
     return <Text>Loading</Text>;
@@ -33,7 +30,12 @@ const SingleReporsity = () => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <ReviewItem review={item} />}
       keyExtractor={({ id }) => id}
-      ListHeaderComponent={() => <ReporsityInfo repository={repository} />}
+      ListHeaderComponent={() => (
+        <>
+          <ReporsityInfo repository={repository} />
+          <ItemSeparator></ItemSeparator>
+        </>
+      )}
       // ...
     />
   );

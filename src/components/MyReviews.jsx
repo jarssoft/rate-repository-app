@@ -5,8 +5,8 @@ import ItemSeparator from "./ItemSeparator";
 import ReviewItem from "./ReviewItem";
 
 const MyReviews = () => {
-  let userId = "zeit.swr";
-  const { repository, loading } = useRepository(userId);
+  let repositoryId = "zeit.swr";
+  const { repository, loading } = useRepository(repositoryId);
 
   if (loading) {
     return <Text>Loading</Text>;
