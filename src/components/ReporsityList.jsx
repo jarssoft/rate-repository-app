@@ -6,6 +6,7 @@ import { Pressable, View } from "react-native";
 import Text from "./Text";
 import { StyleSheet } from "react-native";
 import theme from "../theme";
+import { useNavigate } from "react-router-native";
 
 const orders = [
   { by: "CREATED_AT", direction: "ASC" },
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
 const RepositoryList = () => {
   const [order, setOrder] = useState(orders[0]);
   const { repositories } = useRepositories(order.by, order.direction);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -81,7 +83,10 @@ const RepositoryList = () => {
         </Pressable>
       </View>
 
-      <RepositoryListContainer repositories={repositories} />
+      <RepositoryListContainer
+        repositories={repositories}
+        navigate={navigate}
+      />
     </>
   );
 };
