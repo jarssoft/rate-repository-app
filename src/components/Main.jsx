@@ -7,6 +7,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SingleReporsity from "./SIngleReporsity";
 import CreateReview from "./CreateReview";
+import MyReviews from "./MyReviews";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,7 @@ const Main = () => {
         <Route path="/signin" element={<SignIn />} />{" "}
         <Route path="/signup" element={<SignUp />} />{" "}
         <Route path="/createreview" element={<CreateReview />} />{" "}
+        <Route path="/myreviews" element={<MyReviews />} />{" "}
         <Route path="/single">
           <Route path=":userId" element={<SingleReporsity />} />
         </Route>

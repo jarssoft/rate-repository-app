@@ -1,22 +1,11 @@
 import useRepository from "../hooks/useRepository";
-import { useParams } from "react-router-native";
-import RepositoryItem from "./ReporsityItem";
 import Text from "./Text";
 import { FlatList } from "react-native";
 import ItemSeparator from "./ItemSeparator";
 import ReviewItem from "./ReviewItem";
 
-const ReporsityInfo = ({ repository }) => {
-  return (
-    <>
-      <RepositoryItem item={repository} githubbutton={true}></RepositoryItem>
-      <ItemSeparator></ItemSeparator>
-    </>
-  );
-};
-
-const SingleReporsity = () => {
-  let { userId } = useParams();
+const MyReviews = () => {
+  let userId = "zeit.swr";
   const { repository, loading } = useRepository(userId);
 
   if (loading) {
@@ -33,10 +22,10 @@ const SingleReporsity = () => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <ReviewItem review={item} />}
       keyExtractor={({ id }) => id}
-      ListHeaderComponent={() => <ReporsityInfo repository={repository} />}
+      ListHeaderComponent={ItemSeparator}
       // ...
     />
   );
 };
 
-export default SingleReporsity;
+export default MyReviews;
