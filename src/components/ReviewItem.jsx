@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable, Alert } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
 import { useNavigate } from "react-router-native";
@@ -62,6 +62,16 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItem = ({ review, myButtons }) => {
+  const createTwoButtonAlert = () =>
+    Alert.alert("Delete review", "Are you sure?", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ]);
+
   const navigate = useNavigate();
   // Single review item
   return (
@@ -92,7 +102,7 @@ const ReviewItem = ({ review, myButtons }) => {
           </Pressable>
           <Pressable
             style={[styles.submit, { backgroundColor: theme.colors.error }]}
-            onPress={() => console.log("ReviewItem: Delete review")}
+            onPress={createTwoButtonAlert}
           >
             <Text style={styles.submittext}>Delete review</Text>
           </Pressable>
