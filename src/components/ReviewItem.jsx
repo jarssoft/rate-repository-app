@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { StyleSheet, Pressable } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
+import { useNavigate } from "react-router-native";
 
 function parseISOString(s) {
   var b = s.split(/\D+/);
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItem = ({ review, myButtons }) => {
+  const navigate = useNavigate();
   // Single review item
   return (
     <View style={styles.main}>
@@ -84,7 +86,7 @@ const ReviewItem = ({ review, myButtons }) => {
         <View style={styles.mybuttons}>
           <Pressable
             style={styles.submit}
-            onPress={() => console.log("ReviewItem: View repositor")}
+            onPress={() => navigate(`/single/${review.repositoryId}`)}
           >
             <Text style={styles.submittext}>View repository</Text>
           </Pressable>
