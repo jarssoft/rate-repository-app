@@ -74,7 +74,7 @@ const ReviewItem = ({ review, myButtons }) => {
         </View>
         <View style={styles.maincontainer}>
           <Text fontSize="subheading" fontWeight="bold">
-            {review.user.username}
+            {myButtons ? review.repository.fullName : review.user.username}
           </Text>
           <Text color="textSecondary">
             {parseISOString(review.createdAt).toDateString()}
