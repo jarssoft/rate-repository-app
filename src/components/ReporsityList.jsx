@@ -7,6 +7,7 @@ import Text from "./Text";
 import { StyleSheet } from "react-native";
 import theme from "../theme";
 import { useNavigate } from "react-router-native";
+import { useDebounce } from "use-debounce";
 
 const orders = [
   { by: "CREATED_AT", direction: "ASC" },
@@ -33,7 +34,12 @@ const styles = StyleSheet.create({
 const RepositoryList = () => {
   const [order, setOrder] = useState(orders[0]);
   const [search, setSearch] = useState(undefined);
-  const { repositories } = useRepositories(order.by, order.direction, search);
+  const [searchDebounce] = useDebounce(search, 1000);
+  const { repositories } = useRepositories(
+    order.by,
+    order.direction,
+    searchDebounce
+  );
   const navigate = useNavigate();
 
   console.log(search);
