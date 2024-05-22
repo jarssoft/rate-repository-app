@@ -32,8 +32,11 @@ const styles = StyleSheet.create({
 
 const RepositoryList = () => {
   const [order, setOrder] = useState(orders[0]);
+  const [search, setSearch] = useState(undefined);
   const { repositories } = useRepositories(order.by, order.direction);
   const navigate = useNavigate();
+
+  console.log(search);
 
   return (
     <>
@@ -81,11 +84,25 @@ const RepositoryList = () => {
             Lowest rated{" "}
           </Text>
         </Pressable>
+        <Pressable
+          onPress={() => {
+            setSearch(search != null ? undefined : "");
+          }}
+        >
+          <Text
+            style={[styles.select, { marginLeft: 45 }]}
+            fontWeight={search != null ? "bold" : ""}
+          >
+            Search
+          </Text>
+        </Pressable>
       </View>
 
       <RepositoryListContainer
         repositories={repositories}
         navigate={navigate}
+        onChangeText={(value) => setSearch(value != "" ? value : undefined)}
+        search={search != null}
       />
     </>
   );
