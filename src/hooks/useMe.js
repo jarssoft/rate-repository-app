@@ -4,14 +4,14 @@ import { useQuery } from "@apollo/client";
 import { GET_ME } from "../graphql/queries";
 //import AuthStorageContext from "../context/AuthStorageContext";
 
-const useMe = () => {
+const useMe = (variables) => {
   //const authStorage = useContext(AuthStorageContext);
   //const [repositories, setRepositories] = useState();
   //const [loading, setLoading] = useState(false);
 
   const { data, loading } = useQuery(GET_ME, {
     fetchPolicy: "cache-and-network",
-    // Other options
+    variables,
     onError: (error) => {
       console.log("useMe error " + error.graphQLErrors[0].message);
     },

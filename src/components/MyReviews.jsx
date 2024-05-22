@@ -1,19 +1,18 @@
-import useRepository from "../hooks/useRepository";
 import Text from "./Text";
 import { FlatList } from "react-native";
 import ItemSeparator from "./ItemSeparator";
 import ReviewItem from "./ReviewItem";
+import useMe from "../hooks/useMe";
 
 const MyReviews = () => {
-  let repositoryId = "zeit.swr";
-  const { repository, loading } = useRepository(repositoryId);
+  const { me, loading } = useMe({ includeReviews: true });
 
   if (loading) {
     return <Text>Loading</Text>;
   }
 
-  const reviewNodes = repository.reviews
-    ? repository.reviews.edges.map((edge) => edge.node)
+  const reviewNodes = me.reviews
+    ? me.reviews.edges.map((edge) => edge.node)
     : [];
 
   return (
