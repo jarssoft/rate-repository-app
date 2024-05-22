@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 const RepositoryList = () => {
   const [order, setOrder] = useState(orders[0]);
   const [search, setSearch] = useState(undefined);
-  const { repositories } = useRepositories(order.by, order.direction);
+  const { repositories } = useRepositories(order.by, order.direction, search);
   const navigate = useNavigate();
 
   console.log(search);
