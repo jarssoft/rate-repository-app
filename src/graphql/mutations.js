@@ -28,4 +28,10 @@ export const CREATEUSER = gql`
   }
 `;
 
+export const DELETEREVIEW = gql`
+  mutation DeleteReview($deleteReviewId: ID!) {
+    deleteReview(id: $deleteReviewId)
+  }
+`;
+
 export default SIGNIN;

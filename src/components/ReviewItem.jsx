@@ -3,6 +3,7 @@ import { StyleSheet, Pressable, Alert } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
 import { useNavigate } from "react-router-native";
+import useDeleteReview from "../hooks/useDeleteReview";
 
 function parseISOString(s) {
   var b = s.split(/\D+/);
@@ -62,6 +63,8 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItem = ({ review, myButtons }) => {
+  const [deleteReview] = useDeleteReview();
+
   const createTwoButtonAlert = () =>
     Alert.alert("Delete review", "Are you sure?", [
       {
@@ -69,8 +72,20 @@ const ReviewItem = ({ review, myButtons }) => {
         onPress: () => console.log("Cancel Pressed"),
         style: "cancel",
       },
-      { text: "OK", onPress: () => console.log("OK Pressed") },
+      { text: "OK", onPress: () => delReview(review.id) },
     ]);
+
+  const delReview = async (id) => {
+    console.log(`${id}`);
+    try {
+      const { data } = await deleteReview({
+        reviewId: id,
+      });
+      console.log(JSON.stringify(data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const navigate = useNavigate();
   // Single review item
