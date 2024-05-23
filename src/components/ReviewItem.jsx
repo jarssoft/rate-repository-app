@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review, myButtons, refetch }) => {
+const ReviewItem = ({ item, myButtons, refetch }) => {
   const [deleteReview] = useDeleteReview();
 
   const createTwoButtonAlert = () =>
@@ -72,7 +72,7 @@ const ReviewItem = ({ review, myButtons, refetch }) => {
         onPress: () => console.log("Cancel Pressed"),
         style: "cancel",
       },
-      { text: "OK", onPress: () => delReview(review.id) },
+      { text: "OK", onPress: () => delReview(item.id) },
     ]);
 
   const delReview = async (id) => {
@@ -95,24 +95,24 @@ const ReviewItem = ({ review, myButtons, refetch }) => {
       <View style={styles.info}>
         <View>
           <Text style={styles.ratingText} fontWeight="bold">
-            {review.rating}
+            {item.rating}
           </Text>
         </View>
         <View style={styles.maincontainer}>
           <Text fontSize="subheading" fontWeight="bold">
-            {myButtons ? review.repository.fullName : review.user.username}
+            {myButtons ? item.repository.fullName : item.user.username}
           </Text>
           <Text color="textSecondary">
-            {parseISOString(review.createdAt).toDateString()}
+            {parseISOString(item.createdAt).toDateString()}
           </Text>
-          <Text style={{ flexShrink: 1 }}>{review.text}</Text>
+          <Text style={{ flexShrink: 1 }}>{item.text}</Text>
         </View>
       </View>
       {myButtons ? (
         <View style={styles.mybuttons}>
           <Pressable
             style={styles.submit}
-            onPress={() => navigate(`/single/${review.repositoryId}`)}
+            onPress={() => navigate(`/single/${item.repositoryId}`)}
           >
             <Text style={styles.submittext}>View repository</Text>
           </Pressable>

@@ -20,7 +20,7 @@ const MyReviews = () => {
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
-        <ReviewItem review={item} myButtons={true} refetch={refetch} />
+        <ReviewItem item={item} myButtons={true} refetch={refetch} />
       )}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={ItemSeparator}

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-native";
 import CreateReviewContainer from "./CreateReviewContainer";
-import useCreateReview from "../hooks/useCreateRepository";
+import useCreateReview from "../hooks/useCreateReview";
 
 const CreateReview = () => {
   const [createReview] = useCreateReview();
@@ -17,7 +17,6 @@ const CreateReview = () => {
       });
 
       console.log(`/single/${data.createReview.repositoryId}`);
-      //navigate("/");
       navigate(`/single/${data.createReview.repositoryId}`);
     } catch (e) {
       console.log(e);

@@ -28,7 +28,7 @@ const SingleReporsity = () => {
     <FlatList
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItem item={item} />}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={() => (
         <>
@@ -36,7 +36,6 @@ const SingleReporsity = () => {
           <ItemSeparator></ItemSeparator>
         </>
       )}
-      // ...
     />
   );
 };
