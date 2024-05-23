@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review, myButtons }) => {
+const ReviewItem = ({ review, myButtons, refetch }) => {
   const [deleteReview] = useDeleteReview();
 
   const createTwoButtonAlert = () =>
@@ -82,6 +82,7 @@ const ReviewItem = ({ review, myButtons }) => {
         reviewId: id,
       });
       console.log(JSON.stringify(data));
+      refetch();
     } catch (e) {
       console.log(e);
     }

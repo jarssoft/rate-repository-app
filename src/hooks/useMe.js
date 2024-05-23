@@ -9,7 +9,7 @@ const useMe = (variables) => {
   //const [repositories, setRepositories] = useState();
   //const [loading, setLoading] = useState(false);
 
-  const { data, loading } = useQuery(GET_ME, {
+  const { data, loading, refetch } = useQuery(GET_ME, {
     fetchPolicy: "cache-and-network",
     variables,
     onError: (error) => {
@@ -21,6 +21,7 @@ const useMe = (variables) => {
     //me: data,
     me: data ? data.me : undefined,
     loading: loading,
+    refetch,
   };
 };
 

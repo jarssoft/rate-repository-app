@@ -5,7 +5,7 @@ import ReviewItem from "./ReviewItem";
 import useMe from "../hooks/useMe";
 
 const MyReviews = () => {
-  const { me, loading } = useMe({ includeReviews: true });
+  const { me, loading, refetch } = useMe({ includeReviews: true });
 
   if (loading) {
     return <Text>Loading</Text>;
@@ -19,7 +19,9 @@ const MyReviews = () => {
     <FlatList
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} myButtons={true} />}
+      renderItem={({ item }) => (
+        <ReviewItem review={item} myButtons={true} refetch={refetch} />
+      )}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={ItemSeparator}
       // ...
