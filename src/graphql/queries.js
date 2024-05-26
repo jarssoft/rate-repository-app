@@ -41,7 +41,7 @@ export const GET_REPOSITORY = gql`
       forksCount
       reviewCount
       ratingAverage
-      reviews {
+      reviews(first: 7) {
         edges {
           node {
             id

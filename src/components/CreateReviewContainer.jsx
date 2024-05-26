@@ -5,10 +5,10 @@ import theme from "../theme";
 import * as yup from "yup";
 
 const initialValues = {
-  ownerName: "zeit",
-  repositoryName: "swr",
-  rating: "",
-  text: "",
+  ownerName: "jaredpalmer",
+  repositoryName: "formik",
+  rating: "50",
+  text: "Lorem ipsum dolor sit amet, mi lacus risus eget, arcu pretium non enim, sit commodo lorem est vitae, mattis sem neque. Et justo mauris odio vestibulum, diam nonummy. Nulla ante egestas fringilla pretium urna, justo dolor nunc ac a morbi faucibus, amet eget quaerat ipsum. Volutpat dolor sed ut, in sapien est tincidunt ut id, nulla et. Mauris vel malesuada. Eget accumsan urna dolor wisi, in ac amet aliquam non augue sed, fusce magna auctor, nec mauris tortor sed quis. Nunc tellus, quis volutpat. Quia molestie imperdiet pellentesque, nascetur elementum, aenean turpis volutpat libero et urna. Risus ullamcorper facilisis eros mattis. In magnis taciti, ipsum libero rhoncus massa, sit nulla.",
 };
 
 const validationSchema = yup.object().shape({

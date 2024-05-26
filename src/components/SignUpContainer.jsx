@@ -5,9 +5,9 @@ import theme from "../theme";
 import * as yup from "yup";
 
 const initialValues = {
-  username: "asdfg",
-  password: "asdfg",
-  confirm: "asdfg",
+  username: "",
+  password: "password",
+  confirm: "password",
 };
 
 const validationSchema = yup.object().shape({

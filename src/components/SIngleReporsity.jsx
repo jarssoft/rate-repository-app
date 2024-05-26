@@ -24,6 +24,10 @@ const SingleReporsity = () => {
     ? repository.reviews.edges.map((edge) => edge.node)
     : [];
 
+  const onEndReach = () => {
+    console.log("You have reached the end of the list");
+  };
+
   return (
     <FlatList
       data={reviewNodes}
@@ -36,6 +40,7 @@ const SingleReporsity = () => {
           <ItemSeparator></ItemSeparator>
         </>
       )}
+      onEndReached={onEndReach}
     />
   );
 };
