@@ -14,7 +14,7 @@ const ReporsityInfo = ({ repository }) => {
 
 const SingleReporsity = () => {
   let { repositoryId } = useParams();
-  const { repository, loading } = useRepository(repositoryId);
+  const { repository, loading, fetchMore } = useRepository(repositoryId);
 
   if (loading) {
     return <Text>Loading</Text>;
@@ -26,6 +26,7 @@ const SingleReporsity = () => {
 
   const onEndReach = () => {
     console.log("You have reached the end of the list");
+    fetchMore();
   };
 
   return (
